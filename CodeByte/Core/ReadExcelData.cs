@@ -11,9 +11,9 @@ namespace CodeByte.Core
 
         public static Dictionary<String, String> ReadExcelRowByRow(int rowNumber)
         {
-            string ExcelPath = SystemUtils.GetExcelDataFilePath() + @"\TestData.xlsx";
+            string fname = SystemUtils.GetExcelDataFilePath() + @"\TestData.xlsx";
            
-            string fname = @"D:\Coding\CodeByte\CodeByte\TestData\TestData.xlsx";
+           // string fname = @"D:\Coding\CodeByte\CodeByte\TestData\TestData.xlsx";
             // Read excel file.
             IWorkbook workbook = WorkbookFactory.Create(new FileStream(Path.GetFullPath(fname),
                                 FileMode.Open, FileAccess.Read, FileShare.ReadWrite)
