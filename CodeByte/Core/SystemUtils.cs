@@ -22,8 +22,8 @@ namespace CodeByte.Core
 
         public static string GetExcelDataFilePath()
         {
-            string ExcelFilePath = Directory.GetCurrentDirectory().Split("\\TestData")[0];
-            return ExcelFilePath + "\\";
+            string ExcelFilePath = Directory.GetCurrentDirectory().Split("\\bin")[0];
+            return ExcelFilePath + "\\TestData";
         }
     }
 }
