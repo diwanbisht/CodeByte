@@ -23,13 +23,11 @@ namespace CodeByte
         [TestMethod]
         public void ValidateValidUserLogin()
         {
-            Dictionary<String, String> dicValues = ReadExcelData.ReadExcelRowByRow(2);
+            Dictionary<String, String> dicValues = ReadExcelData.ReadExcelRowByRow(1);
             string UserName = dicValues["UserName"];
             string Password = dicValues["Password"];
-            //HomePage homePage = new HomePage(this.Driver);
-            new HomePage(this.Driver).ValidateEnterUserNameAndPassword(UserName, Password);
-            string pageTitle = this.driver.Title;
-            Assert.AreEqual("Adactin.com - Hotel Reservation System", pageTitle, "Page title is not matched");
+            new LoginPage(this.Driver).ValidateEnterUserNameAndPassword(UserName, Password);
+            Assert.IsTrue(new DashBoardHomePage(this.Driver).ValidateDashBoardLoginPage("Welcome"), "Login Failed.......");
         }
 
 
@@ -37,26 +35,21 @@ namespace CodeByte
         [TestMethod]
         public void ValidateInValidUserLogin()
         {
-
-            Dictionary<String, String> dicValues = ReadExcelData.ReadExcelRowByRow(2);
+            Dictionary<String, String> dicValues = ReadExcelData.ReadExcelRowByRow(3);
             string UserName = dicValues["UserName"];
-            string Password = dicValues["Password"];
-            //HomePage homePage = new HomePage(this.Driver);
-            new HomePage(this.Driver).ValidateEnterUserNameAndPassword(UserName, Password);
-            string pageTitle = this.driver.Title;
-            Assert.AreEqual("Adactin.com - Hotel Reservation System", pageTitle, "Page title is not matched");
+            string Password = dicValues["Password"];                   
+            Assert.AreEqual("Invalid credentials", new LoginPage(this.Driver).ValidateInvalidLogin(UserName, Password), "Invalid Message is not visible");
         }
 
         [TestMethod]
-        public void ValidateLogin()
+        public void ValidateUserMyLeaveList()
         {
-
-            Dictionary<String, String> dicValues = ReadExcelData.ReadExcelRowByRow(2);
+            Dictionary<String, String> dicValues = ReadExcelData.ReadExcelRowByRow(1);
             string UserName = dicValues["UserName"];
             string Password = dicValues["Password"];
-            new HomePage(this.Driver).ValidateEnterUserNameAndPassword(UserName, Password);
-            string pageTitle = this.driver.Title;
-            Assert.AreEqual("Adactin.com - Hotel Reservation System", pageTitle, "Page title is not matched");
+            string UserLeaveListGrid = dicValues["UserLeaveList"];
+            new LoginPage(this.Driver).ValidateEnterUserNameAndPassword(UserName, Password);
+            Assert.IsTrue(new DashBoardHomePage(this.Driver).ValidateMyLeaveUserGrid(UserLeaveListGrid), "Login Failed.......");
         }
 
        
