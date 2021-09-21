@@ -46,6 +46,10 @@ namespace CodeByte.ObjectsRepo
             BaseSetupConfiguration.ClickElement(this.Logout);
         }
 
+        /// <summary>
+        /// Validate DashBoard Logged in Page.
+        /// </summary>
+
         public bool ValidateDashBoardLoginPage(String SuccessfullyLoginWelcomeTag)
         {
             string value = this.WelComeTag.Text;
@@ -56,6 +60,9 @@ namespace CodeByte.ObjectsRepo
             else { return false; }
         }
 
+        /// <summary>
+        /// Validate My leave User Grid on DashBoard Page.
+        /// </summary>
         public bool ValidateMyLeaveUserGrid(string MyLeaveGridList)
         {
             BaseSetupConfiguration.ClickElement(this.MyLeaveQuickLaunch);

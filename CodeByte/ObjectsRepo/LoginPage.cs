@@ -40,7 +40,9 @@ namespace CodeByte.ObjectsRepo
         private IWebElement InvalidLogin => this.driver.FindElement(By.XPath("//span[contains(text(),'Invalid credentials')]"));
 
 
-
+        /// <summary>
+        /// Validate Enter User Credintial in Login Page.
+        /// </summary>
         public void ValidateEnterUserNameAndPassword(string UserName, string Password)
         {
             this.UserName.Clear();
@@ -48,9 +50,11 @@ namespace CodeByte.ObjectsRepo
             this.Password.Clear();
             this.Password.SendKeys(Password);
             BaseSetupConfiguration.ClickElement(this.LogicButton);
-            //new DashBoardHomePage(this.driver).UserLogOut();
         }
 
+        /// <summary>
+        /// Validate Invalid User Credintail login
+        /// </summary>
         public string ValidateInvalidLogin(string UserName, string Password)
         {
             this.UserName.Clear();
