@@ -1,15 +1,16 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using AventStack.ExtentReports;
+using AventStack.ExtentReports.Reporter;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CodeByte.Core
 {
-
     public class BaseSetupConfiguration
     {
+       
+        public ExtentTest test { get; set; }
+
         public IWebDriver driver { get; set; }
         public TestContext TestContext { get; set; }
 
@@ -17,14 +18,22 @@ namespace CodeByte.Core
         {
             this.driver = driver;
         }
+     
 
+        [ClassInitialize]
+        public void ClassInitilizer()
+        {
+           
+        }
+
+    
         [TestInitialize]
         public void OpenBrowser()
         {
             driver = new ChromeDriver();
             var BaseUrl = ReadExcelData.ReadExcelRowByRow(2);
-            // var BrowserType = ReadExcelData.ReadExcelRowByRow(2);
             driver.Navigate().GoToUrl(BaseUrl["BaseUrl"].ToString());
+            // driver.Navigate().GoToUrl(ConfigurationSettings.AppSettings.Get("BaseUrl"));
         }
 
 
@@ -35,7 +44,7 @@ namespace CodeByte.Core
                 driver.Quit();
         }
 
-         public IWebDriver Driver
+        public IWebDriver Driver
          {
              get { return driver; }
          }

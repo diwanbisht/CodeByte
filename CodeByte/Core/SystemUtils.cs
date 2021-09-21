@@ -14,6 +14,11 @@ namespace CodeByte.Core
             return path + "\\";
         }
 
+        public static string GetExtendReportPath()
+        {
+            string path = Directory.GetCurrentDirectory().Split("\\Results")[0];
+            return path + "\\";
+        }
 
         public static string GetExcelDataFilePath()
         {

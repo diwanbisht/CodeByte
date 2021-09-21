@@ -8,8 +8,8 @@ using System.Collections.Generic;
 namespace CodeByte
 {
     [TestClass]
-        public class CoderByteTest : BaseSetupConfiguration
-        {
+    public class CoderByteTest : BaseSetupConfiguration
+    {
         /// <summary>
         /// Initializes a new instance of the <see cref="HomePageSteps"/> class.
         /// </summary>
@@ -28,9 +28,8 @@ namespace CodeByte
             string Password = dicValues["Password"];
             //HomePage homePage = new HomePage(this.Driver);
             new HomePage(this.Driver).ValidateEnterUserNameAndPassword(UserName, Password);
-           // homePage.ValidateEnterUserNameAndPassword(UserName, Password);
             string pageTitle = this.driver.Title;
-            Assert.AreEqual("Adactin.com - Hotel Reservation System", pageTitle,   "Page title is not matched");
+            Assert.AreEqual("Adactin.com - Hotel Reservation System", pageTitle, "Page title is not matched");
         }
 
 
@@ -42,16 +41,10 @@ namespace CodeByte
             Dictionary<String, String> dicValues = ReadExcelData.ReadExcelRowByRow(2);
             string UserName = dicValues["UserName"];
             string Password = dicValues["Password"];
-
-            /*IWebElement userName = this.driver.FindElement(By.Name("username"));
-            IWebElement password = this.driver.FindElement(By.Name("password"));
-            IWebElement loginButton = this.driver.FindElement(By.Name("login"));
-
-           userName.SendKeys(UserName);
-           password.SendKeys(Password);*/
-            //loginButton.Click();
-
-
+            //HomePage homePage = new HomePage(this.Driver);
+            new HomePage(this.Driver).ValidateEnterUserNameAndPassword(UserName, Password);
+            string pageTitle = this.driver.Title;
+            Assert.AreEqual("Adactin.com - Hotel Reservation System", pageTitle, "Page title is not matched");
         }
 
         [TestMethod]
@@ -61,16 +54,11 @@ namespace CodeByte
             Dictionary<String, String> dicValues = ReadExcelData.ReadExcelRowByRow(2);
             string UserName = dicValues["UserName"];
             string Password = dicValues["Password"];
-
-            /* IWebElement userName = this.driver.FindElement(By.Name("username"));
-             IWebElement password = this.driver.FindElement(By.Name("password"));
-             IWebElement loginButton = this.driver.FindElement(By.Name("login"));
-
-             userName.SendKeys(UserName);
-             password.SendKeys(Password);
-             loginButton.Click();*/
-
-
+            new HomePage(this.Driver).ValidateEnterUserNameAndPassword(UserName, Password);
+            string pageTitle = this.driver.Title;
+            Assert.AreEqual("Adactin.com - Hotel Reservation System", pageTitle, "Page title is not matched");
         }
+
+       
     }
 }
