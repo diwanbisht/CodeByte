@@ -3,6 +3,8 @@ using AventStack.ExtentReports.Reporter;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using WebDriverManager;
+using WebDriverManager.DriverConfigs.Impl;
 
 namespace CodeByte.Core
 {
@@ -30,6 +32,9 @@ namespace CodeByte.Core
         [TestInitialize]
         public void OpenBrowser()
         {
+            //new DriverManager().SetUpDriver(new ChromeConfig());
+            //driver = new ChromeDriver();
+
             driver = new ChromeDriver();
             var BaseUrl = ReadExcelData.ReadExcelRowByRow(2);
             driver.Navigate().GoToUrl(BaseUrl["BaseUrl"].ToString());
